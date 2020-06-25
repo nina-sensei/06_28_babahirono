@@ -77,6 +77,23 @@ if ($status == false) {
          </tbody>
       </table>
    </fieldset>
+
+   <style>
+      body {
+         background-color: #F1F1F2;
+         margin: 0 auto;
+         text-align: center;
+         color: #685161;
+      }
+
+      legend {
+         font-size: 1.5em;
+      }
+
+      table{
+         width: 700px;
+      }
+   </style>
 </body>
 
 </html>

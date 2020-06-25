@@ -15,8 +15,14 @@ try {
 }
 
 // データ取得SQL作成
-$sql = 'SELECT * FROM schedule_share where angle = $_POST["an"] AND text LIKE "%' . $_POST["free"] . '%"';
+// 変数に置き換え
+$an = isset($_POST["an"]) ? $_POST["an"] : NULL;
+$ab = isset($_POST["ab"]) ? $_POST["ab"] : NULL;
+$ken = isset($_POST["ken"]) ? $_POST["ken"] : NULL;
+$ei = isset($_POST["ei"]) ? $_POST["ei"] : NULL;
 
+$sql = 'SELECT * FROM schedule_share where angle="' . $an . '" AND absorption="' . $ab . '" AND kennedy="' . $ken . '" AND eichner="' . $ei . '" AND text LIKE "%' . $_POST["free"] . '%"';
+//  
 // SQL準備&実行
 $stmt = $pdo->prepare($sql);
 $status = $stmt->execute();
@@ -81,6 +87,24 @@ if ($status == false) {
          </tbody>
       </table>
    </fieldset>
+
+   <style>
+      body {
+         background-color: #F1F1F2;
+         margin: 0 auto;
+         text-align: center;
+         color: #685161;
+      }
+
+      legend {
+         font-size: 1.5em;
+      }
+
+      table {
+         width: 700px;
+      }
+   </style>
+
 </body>
 
 </html>

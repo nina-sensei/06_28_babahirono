@@ -8,7 +8,7 @@
 </head>
 
 <body>
-   <form action="result.php" method="POST">
+   <form action="06kadai_p_result.php" method="POST">
       <h2>患者検索</h2>
       <p>カルテNo.検索</p>
       <input type="text" name="krt">
@@ -18,6 +18,18 @@
       <input type="text" name="nm">
       <button>検索</button>
    </form>
+
+   <style>
+      body {
+         background-color: #F1F1F2;
+         margin: 0 auto;
+         color: #5D535E;
+      }
+
+      form {
+         margin-left: 600px;
+      }
+   </style>
 
 </body>
 
