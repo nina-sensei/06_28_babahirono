@@ -21,8 +21,34 @@ $ab = isset($_POST["ab"]) ? $_POST["ab"] : NULL;
 $ken = isset($_POST["ken"]) ? $_POST["ken"] : NULL;
 $ei = isset($_POST["ei"]) ? $_POST["ei"] : NULL;
 
-$sql = 'SELECT * FROM schedule_share where angle="' . $an . '" AND absorption="' . $ab . '" AND kennedy="' . $ken . '" AND eichner="' . $ei . '" AND text LIKE "%' . $_POST["free"] . '%"';
-//  
+// $sql = 'SELECT * FROM schedule_share where angle="' . $an . '" AND absorption="' . $ab . '" AND kennedy="' . $ken . '" AND eichner="' . $ei . '" AND text LIKE "%' . $_POST["free"] . '%"';
+
+// 条件分岐してみる
+$where = [];
+//angle
+if (isset($an) && $an != "") {
+   $where[] = " ( angle = '" . $an . "' ) ";
+}
+//absorption
+if (isset($ab) && $ab != "") {
+   $where[] = " ( absorption = '" . $ab . "' ) ";
+}
+//kennedy
+if (isset($ken) && $ken != "") {
+   $where[] = " ( kennedy = '" . $ken . "' ) ";
+}
+//eichner
+if (isset($ei) && $ei != "") {
+   $where[] = " ( eichner = '" . $ei . "' ) ";
+}
+
+$sql = 'SELECT * FROM schedule_share';
+
+if (count($where) > 0) {
+   $sql .= " where " . implode(" and ", $where);
+}
+
+
 // SQL準備&実行
 $stmt = $pdo->prepare($sql);
 $status = $stmt->execute();
